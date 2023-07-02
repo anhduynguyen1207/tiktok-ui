@@ -1,20 +1,19 @@
-import { useState } from 'react';
+import config from "~/config";
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faSpinner, faMagnifyingGlass, faSignIn, faEllipsisVertical, faLanguage, faQuestionCircle, faKeyboard, faCoins, faGear, faUser, faBookmark, faSignOut } from '@fortawesome/free-solid-svg-icons';
-import { Wrapper as PopperWrapper } from '~/components/Popper';
-import HeadlessTippy from '@tippyjs/react/headless';
+import { faEllipsisVertical, faLanguage, faQuestionCircle, faKeyboard, faCoins, faGear, faUser, faBookmark, faSignOut } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 
+import Search from '../Search';
 import Menu from '~/components/Popper/Menu';
-import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
 import styles from './Header.module.scss'
 import images from '~/assets/images';
 
 import { UploadIcon } from '~/components/Icons/Icons';
 import Image from '~/components/Image';
+import { Link } from 'react-router-dom';
 const cx = classNames.bind(styles);
 const MENU_ITEMS = [
     {
@@ -54,12 +53,7 @@ const MENU_ITEMS = [
 
 function Header() {
     const currentUser = true;
-    const [searchSearch, setSearchSearch] = useState([])
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         setSearchSearch([1, 2])
-    //     }, 0)
-    // }, [])
+
 
     const handleMenuChange = (menuItem) => {
         console.log(menuItem)
@@ -97,41 +91,9 @@ function Header() {
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <div className={cx('logo')}>
-                    <img src={images.logo} alt='Tiktok' />
+                    <Link to={config.routes.home}> <img src={images.logo} alt='Tiktok' /></Link>
                 </div>
-                <HeadlessTippy
-                    interactive
-                    visible={searchSearch.length > 0}
-                    render={attrs => (
-                        <div className={cx('search-results')} tabIndex="-1" {...attrs}>
-                            <PopperWrapper>
-                                <h4 className={cx('search-title')}>
-                                    Accounts
-                                </h4>
-                                <AccountItem />
-                                <AccountItem />
-                                <AccountItem />
-                            </PopperWrapper>
-                        </div>
-                    )}
-                >
-                    <div className={cx('search')}>
-                        <input
-                            placeholder='Search accounts and videos'
-                            spellCheck={false}
-                            onChange={e => setSearchSearch(e.target.value)}
-                        />
-                        <button className={cx('clear')}>
-                            <FontAwesomeIcon icon={faCircleXmark} />
-                        </button>
-                        <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
-
-                        <button className={cx('search-btn')}>
-                            <FontAwesomeIcon icon={faMagnifyingGlass} />
-                        </button>
-
-                    </div>
-                </HeadlessTippy>
+                <Search />
                 <div className={cx('actions')}>
                     {currentUser ? (
                         <>
@@ -162,7 +124,7 @@ function Header() {
                         {currentUser ? (
                             <Image
                                 className={cx('user-avatar')}
-                                src="https://123p16-sign-useast2a.tiktokcdn.com/tos-useast2a-avt-0068-giso/c31c83118ae405994c36ab1b85ed97ff~c5_100x100.jpeg?x-expires=1688108400&x-signature=vnHIQLxerpp8I5OMoY7InFY0Sfo%3D"
+                                src="https://p16-sign-useast2a.tiktokcdn.com/tos-useast2a-avt-0068-giso/c31c83118ae405994c36ab1b85ed97ff~c5_100x100.jpeg?x-expires=1688108400&x-signature=vnHIQLxerpp8I5OMoY7InFY0Sfo%3D"
                                 alt='Nguyen Anh Duy'
                                 fallback='https://files.fullstack.edu.vn/f8-prod/user_photos/333549/64942e5c7bd78.jpg'
                             />

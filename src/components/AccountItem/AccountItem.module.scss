@@ -17,15 +17,22 @@
 
 }
 
-.infor {
-    flex: 1;
-    margin-left: 12px;
-    line-height: 1.8rem;
+.body {
+    margin-top: 12px;
+    color: #161823;
+}
+
+.nickname {
+    font-size: 1.8rem;
 }
 
 .name {
+    font-size: 1.4rem;
+}
+
+.analytics {
+    margin-top: 10px;
     font-size: 1.6rem;
-    font-weight: 600;
 }
 
 .icon-check {
@@ -33,7 +40,10 @@
     color: rgb(32, 213, 236);
 }
 
-.username {
-    font-size: 1.4rem;
-    color: rgb(22, 24, 35, 0.5);
+.value~.label {
+    margin-left: 20px;
+}
+
+.label {
+    color: #161823bf;
 }

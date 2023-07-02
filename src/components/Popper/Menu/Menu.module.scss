@@ -27,10 +27,15 @@
     padding-bottom: 8px;
 }
 
+.menu-body {
+    overflow: auto;
+}
+
 //Header
 .header {
     position: relative;
-    height: 50px;
+    height: 45px;
+    flex-shrink: 0;
 }
 
 .back-btn {
